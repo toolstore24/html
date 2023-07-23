@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information System</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Student Information System</h1>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2>Add Student</h2>
+        <form id="addStudentForm">
+          <div class="form-group">
+            <label for="studentName">Name</label>
+            <input type="text" class="form-control" id="studentName" required>
+          </div>
+          <div class="form-group">
+            <label for="studentRoll">Roll Number</label>
+            <input type="text" class="form-control" id="studentRoll" required>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information System</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Student Information System</h1>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h2>Add Student</h2>
+        <form id="addStudentForm">
+          <div class="form-group">
+            <label for="studentName">Name</label>
+            <input type="text" class="form-control" id="studentName" required>
+          </div>
+          <div class="form-group">
+            <label for="studentRoll">Roll Number</label>
+            <input type="text" class="form-control" id="studentRoll" required>
+          </div>
+          <div class="form-group">
+            <label for="studentGrade">Grade</label>
+            <input type="text" class="form-control" id="studentGrade" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Student</button>
+        </form>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Student List</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Roll Number</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody id="studentList">
+            <!-- Student data will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Array to store student data
+    let students = [];
+
+    // Function to add a student to the array and update the table
+    function addStudent(name, roll, grade) {
+      students.push({
+        name: name,
+        roll: roll,
+        grade: grade
+      });
+      updateTable();
+    }
+
+    // Function to update the table with the current student data
+    function updateTable() {
+      let tableBody = document.getElementById("studentList");
+      tableBody.innerHTML = "";
+
+      students.forEach((student) => {
+        let row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${student.name}</td>
+          <td>${student.roll}</td>
+          <td>${student.grade}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Event listener for the form submission
+    document.getElementById("addStudentForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      let name = document.getElementById("studentName").value;
+      let roll = document.getElementById("studentRoll").value;
+      let grade = document.getElementById("studentGrade").value;
+
+      addStudent(name, roll, grade);
+
+      // Clear the form fields
+      document.getElementById("studentName").value = "";
+      document.getElementById("studentRoll").value = "";
+      document.getElementById("studentGrade").value = "";
+    });
+  </script>
+</body>
+
+</html>￼Enter          </div>
+          <div class="form-group">
+            <label for="studentGrade">Grade</label>
+            <input type="text" class="form-control" id="studentGrade" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Student</button>
+        </form>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Student List</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Roll Number</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody id="studentList">
+            <!-- Student data will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Array to store student data
+    let students = [];
+
+    // Function to add a student to the array and update the table
+    function addStudent(name, roll, grade) {
+      students.push({
+        name: name,
+        roll: roll,
+        grade: grade
+      });
+      updateTable();
+    }
+
+    // Function to update the table with the current student data
+    function updateTable() {
+      let tableBody = document.getElementById("studentList");
+      tableBody.innerHTML = "";
+
+      students.forEach((student) => {
+        let row = document.createElement("tr");
+
+row.innerHTML = `
+          <td>${student.name}</td>
+          <td>${student.roll}</td>
+          <td>${student.grade}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Event listener for the form submission
+    document.getElementById("addStudentForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      let name = document.getElementById("studentName").value;
+      let roll = document.getElementById("studentRoll").value;
+      let grade = document.getElementById("studentGrade").value;
+
+      addStudent(name, roll, grade);
+
+      // Clear the form fields
+      document.getElementById("studentName").value = "";
+      document.getElementById("studentRoll").value = "";
+      document.getElementById("studentGrade").value = "";
+    });
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
