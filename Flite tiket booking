@@ -1,0 +1,166 @@
+Creating a complete responsive Flight Booking System involves HTML, CSS, and JavaScript code. This example demonstrates the frontend part of the system, including a flight search form and displaying the available flights. Please note that this is a basic representation, and a real-world system would require backend integration to handle booking and other functionalities.
+
+HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Flight Booking System</h1>
+        <div class="search-form">
+            <label for="origin">From:</label>
+            <input type="text" id="origin" placeholder="Origin">
+
+            <label for="destination">To:</label>
+            <input type="text" id="destination" placeholder="Destination">
+
+            <label for="departure">Departure Date:</label>
+            <input type="date" id="departure" placeholder="Departure Date">
+
+            <button onclick="searchFlights()">Search Flights</button>
+        </div>
+        <div class="flight-results" id="flightResults">
+            <!-- Flight search results will be displayed here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+label {
+    flex: 1 0 100px;
+}
+
+input {
+    flex: 1 0 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.flight-results {
+    text-align: center;
+}
+
+.flight-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.flight-card p {
+    margin: 5px 0;
+}
+JS
+
+// This is a dummy data for flight search results
+const dummyFlights = [
+    {
+        id: 1,
+        origin: 'New York',
+        destination: 'Los Angeles',
+        departureDate: '2023-07-25',
+        departureTime: '08:00 AM',
+        arrivalTime: '11:00 AM',
+        price: 200.50,
+    },
+    {
+        id: 2,
+        origin: 'Los Angeles',
+        destination: 'New York',
+        departureDate: '2023-07-28',
+        departureTime: '02:00 PM',
+        arrivalTime: '05:00 PM',
+        price: 220.75,
+    },
+    // Add more dummy flight data here...
+];
+
+function searchFlights() {
+    const origin = document.getElementById('origin').value;
+    const destination = document.getElementById('destination').value;
+    const departureDate = document.getElementById('departure').value;
+
+    // In a real system, you would send this data to the backend to search for flights
+    // Here, we are using dummy data to simulate the search results
+    const searchResults = dummyFlights.filter(flight => (
+        flight.origin.toLowerCase() === origin.toLowerCase() &&
+        flight.destination.toLowerCase() === destination.toLowerCase() &&
+        flight.departureDate === departureDate
+    ));
+
+    displayFlightResults(searchResults);
+}
+
+function displayFlightResults(flights) {
+    const flightResultsElement = document.getElementById('flightResults');
+    flightResultsElement.innerHTML = '';
+
+    if (flights.length === 0) {
+        flightResultsElement.innerHTML = '<p>No flights found for the selected criteria.</p>';
+        return;
+    }
+
+    flights.forEach(flight => {
+        const flightCard = document.createElement('div');
+        flightCard.classList.add('flight-card');
+        flightCard.innerHTML = `
+            <p><strong>Flight ID:</strong> ${flight.id}</p>
+            <p><strong>From:</strong> ${flight.origin}</p>
+            <p><strong>To:</strong> ${flight.destination}</p>
+            <p><strong>Departure Date:</strong> ${flight.departureDate}</p>
+            <p><strong>Departure Time:</strong> ${flight.departureTime}</p>
+            <p><strong>Arrival Time:</strong> ${flight.arrivalTime}</p>
+            <p><strong>Price:</strong> $${flight.price.toFixed(2)}</p>
+        `;
+        flightResultsElement.appendChild(flightCard);
+    });
+}
+In this example, we have a flight search form that allows users to enter the origin, destination, and departure date. When the "Search Flights" button is clicked, the searchFlights() function is called, which filters the dummy flight data based on the entered criteria. The matching flights are then displayed using the displayFlightResults() function.
+
+Please note that this is a frontend-only example, and for a real-world Flight Booking System, you would need to implement the backend to handle flight data, user authentication, and booking processes. Additionally, you should consider adding data validation, error handling, and more features based on your specific requirements.
