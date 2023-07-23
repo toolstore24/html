@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Employee Management System</h1>
+    <h2>Employee Data</h2>
+    <table>
+      <thead>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Employee Management System</h1>
+    <h2>Employee Data</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Payroll</th>
+        </tr>
+      </thead>
+      <tbody id="employee-table">
+        <!-- Employee data will be displayed here -->
+      </tbody>
+    </table>
+
+    <h2>Add New Employee</h2>
+    <form id="add-employee-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <label for="role">Role:</label>
+      <input type="text" id="role" required>
+      <label for="payroll">Payroll:</label>
+      <input type="number" id="payroll" required>
+      <button type="submit">Add Employee</button>
+    </form>
+  </div>
+
+  <script>
+    // Sample data for initial display
+    const employees = [
+      { name: 'John Doe', role: 'Software Engineer', payroll: 5000 },
+      { name: 'Jane Smith', role: 'HR Manager', payroll: 6000 }
+    ];
+
+    // Function to display employees in the table
+    function displayEmployees() {
+      const tableBody = document.getElementById('employee-table');
+      tableBody.innerHTML = '';
+
+      employees.forEach((employee) => {
+        const row = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        const roleCell = document.createElement('td');
+        const payrollCell = document.createElement('td');
+
+        nameCell.textContent = employee.name;
+        roleCell.textContent = employee.role;
+        payrollCell.textContent = employee.payroll;
+
+        row.appendChild(nameCell);
+        row.appendChild(roleCell);
+        row.appendChild(payrollCell);
+
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Function to add a new employee
+    function addEmployee(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const role = document.getElementById('role').value;
+      const payroll = parseInt(document.getElementById('payroll').value, 10);
+
+      if (name && role && payroll) {
+        employees.push({ name, role, payroll });
+        displayEmployees();
+        document.getElementById('add-employee-form').reset();
+      } else {
+        alert('Please fill all the fields.');
+      }
+    }
+
+    // Event listener for form submission
+    document.getElementById('add-employee-form').addEventListener('submit', addEmployee);
+
+    // Display initial data
+    displayEmployees();
+  </script>
+</body>
+</html>
+￼Enter        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Payroll</th>
+        </tr>
+      </thead>
+      <tbody id="employee-table">
+        <!-- Employee data will be displayed here -->
+      </tbody>
+    </table>
+
+    <h2>Add New Employee</h2>
+    <form id="add-employee-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <label for="role">Role:</label>
+      <input type="text" id="role" required>
+      <label for="payroll">Payroll:</label>
+      <input type="number" id="payroll" required>
+      <button type="submit">Add Employee</button>
+    </form>
+  </div>
+
+  <script>
+    // Sample data for initial display
+    const employees = [
+{ name: 'John Doe', role: 'Software Engineer', payroll: 5000 },
+      { name: 'Jane Smith', role: 'HR Manager', payroll: 6000 }
+    ];
+
+    // Function to display employees in the table
+    function displayEmployees() {
+      const tableBody = document.getElementById('employee-table');
+      tableBody.innerHTML = '';
+
+      employees.forEach((employee) => {
+        const row = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        const roleCell = document.createElement('td');
+        const payrollCell = document.createElement('td');
+
+        nameCell.textContent = employee.name;
+        roleCell.textContent = employee.role;
+        payrollCell.textContent = employee.payroll;
+
+        row.appendChild(nameCell);
+        row.appendChild(roleCell);
+        row.appendChild(payrollCell);
+
+        tableBody.appendChild(row);
+      });
+    }
