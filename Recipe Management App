@@ -1,0 +1,156 @@
+Creating a complete responsive Recipe Management App requires a combination of HTML, CSS, and JavaScript. Below is a basic implementation to get you started. Keep in mind that this is a simplified version, and you can expand and enhance it further based on your requirements.
+
+HTML:￼En<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Management App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Recipe Management App</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="categories">
+                <h2>Categories</h2>
+                <ul id="categoryList">
+                    <!-- Categories will be dynamically added here -->
+                </ul>
+            </div>
+            <div class="recipes">
+                <h2>Recipes</h2>
+                <input type="text" id="searchInput" placeholder="Search recipes">
+                <ul id="recipeList">
+                    <!-- Recipes will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+css
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.categories, .recipes {
+    flex-basis: 48%;
+    margin: 10px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+    padding: 8px;
+}
+
+li:hover {
+    background-color: #f2f2f2;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .categories, .recipes {
+        flex-basis: 100%;
+    }
+}
+
+
+const categories = [
+    { id: 1, name: 'Breakfast' },
+    { id: 2, name: 'Lunch' },
+    { id: 3, name: 'Dinner' },
+    // Add more categories as needed
+];
+
+const recipes = [
+    { id: 1, name: 'Scrambled Eggs', categoryId: 1 },
+    { id: 2, name: 'Pasta Carbonara', categoryId: 2 },
+    { id: 3, name: 'Chicken Curry', categoryId: 3 },
+    // Add more recipes as needed
+];
+
+const categoryList = document.getElementById('categoryList');
+const recipeList = document.getElementById('recipeList');
+const searchInput = document.getElementById('searchInput');
+
+function displayCategories() {
+    categoryList.innerHTML = '';
+    categories.forEach(category => {
+        const listItem = document.createElement('li');
+        listItem.textContent = category.name;
+        listItem.addEventListener('click', () => displayRecipes(category.id));
+        categoryList.appendChild(listItem);
+    });
+}
+
+function displayRecipes(categoryId) {
+    recipeList.innerHTML = '';
+    const filteredRecipes = recipes.filter(recipe => recipe.categoryId === categoryId);
+    filteredRecipes.forEach(recipe => {
+        const listItem = document.createElement('li');
+        listItem.textContent = recipe.name;
+        recipeList.appendChild(listItem);
+    });
+}
+
+function filterRecipes(query) {
+    const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(query.toLowerCase()));
+    recipeList.innerHTML = '';
+    filteredRecipes.forEach(recipe => {
+        const listItem = document.createElement('li');
+        listItem.textContent = recipe.name;
+        recipeList.appendChild(listItem);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayCategories();
+    displayRecipes(categories[0].id); // Display the first category recipes by default
+
+    searchInput.addEventListener('input', () => {
+        filterRecipes(searchInput.value);
+    });
+});
+
+In this implementation, the app displays a list of categories on the left and a list of recipes on the right. You can click on a category to view the recipes belonging to that category, and there's a search functionality to filter recipes based on their names. This is just a basic starting point, and you can extend and enhance it further as per your requirements like adding the ability to add, edit, and delete recipes, store data in a backend server, etc.
