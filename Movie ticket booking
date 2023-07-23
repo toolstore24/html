@@ -1,0 +1,191 @@
+Creating a complete movie ticket booking system with HTML, CSS, and JavaScript involves multiple components such as booking forms, showtime displays, and seat selection. For the sake of brevity, I'll provide a basic version of the code with the necessary functionalities. Note that this is a simplified example and doesn't include server-side functionality for handling bookings, payment processing, or user authentication.
+
+Let's start with the HTML structure:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Ticket Booking</h1>
+        <div class="movie-list">
+            <h2>Select a movie:</h2>
+            <ul id="movies">
+                <!-- Populate this list dynamically with JavaScript -->
+            </ul>
+        </div>
+        <div class="showtimes">
+            <h2>Showtimes:</h2>
+            <ul id="showtimes">
+                <!-- Populate this list dynamically with JavaScript -->
+            </ul>
+        </div>
+        <div class="seat-selection">
+            <h2>Select a seat:</h2>
+            <div class="seats">
+                <!-- Populate this section dynamically with JavaScript -->
+            </div>
+        </div>
+        <div class="booking-details">
+            <h2>Booking Details:</h2>
+            <p id="selected-movie">Selected Movie: <span></span></p>
+            <p id="selected-showtime">Selected Showtime: <span></span></p>
+            <p id="selected-seat">Selected Seat: <span></span></p>
+            <button id="book-btn" disabled>Book Now</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+css
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.movie-list, .showtimes, .seat-selection, .booking-details {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+// Sample data for movies and showtimes
+const movies = [
+    { id: 1, title: "Movie 1" },
+    { id: 2, title: "Movie 2" },
+    // Add more movie data here...
+];
+
+const showtimes = [
+    { id: 1, time: "12:00 PM" },
+    { id: 2, time: "3:00 PM" },
+    { id: 3, time: "6:00 PM" },
+    // Add more showtime data here...
+];
+
+// Function to populate movies list
+function populateMoviesList() {
+    const moviesList = document.getElementById("movies");
+    movies.forEach(movie => {
+        const li = document.createElement("li");
+        li.textContent = movie.title;
+        li.addEventListener("click", () => selectMovie(movie));
+        moviesList.appendChild(li);
+    });
+}
+
+// Function to populate showtimes list
+function populateShowtimesList() {
+    const showtimesList = document.getElementById("showtimes");
+    showtimes.forEach(showtime => {
+        const li = document.createElement("li");
+        li.textContent = showtime.time;
+        li.addEventListener("click", () => selectShowtime(showtime));
+        showtimesList.appendChild(li);
+    });
+}
+
+// Function to populate seat selection
+function populateSeatSelection() {
+    const seatsContainer = document.querySelector(".seats");
+    // Add your seat selection logic here, e.g., displaying a grid of seats
+}
+
+// Function to handle movie selection
+function selectMovie(movie) {
+    const selectedMovieSpan = document.querySelector("#selected-movie span");
+    selectedMovieSpan.textContent = movie.title;
+    enableBookingButton();
+}
+
+// Function to handle showtime selection
+function selectShowtime(showtime) {
+    const selectedShowtimeSpan = document.querySelector("#selected-showtime span");
+    selectedShowtimeSpan.textContent = showtime.time;
+    enableBookingButton();
+}
+
+// Function to enable the booking button when both movie and showtime are selected
+function enableBookingButton() {
+    const selectedMovieSpan = document.querySelector("#selected-movie span").textContent;
+    const selectedShowtimeSpan = document.querySelector("#selected-showtime span").textContent;
+    const bookBtn = document.getElementById("book-btn");
+    
+    if (selectedMovieSpan && selectedShowtimeSpan) {
+        bookBtn.disabled = false;
+    } else {
+        bookBtn.disabled = true;
+    }
+}
+
+// Function to handle booking
+function bookTicket() {
+    const selectedMovie = document.querySelector("#selected-movie span").textContent;
+    const selectedShowtime = document.querySelector("#selected-showtime span").textContent;
+    const selectedSeat = "Selected Seat: Not implemented"; // Add logic to get the selected seat
+
+    // You can implement the booking logic here, e.g., send the data to the server
+
+    alert(`Movie: ${selectedMovie}\nShowtime: ${selectedShowtime}\nSeat: ${selectedSeat}\nBooking Successful!`);
+}
+
+// Event listener for booking button
+document.getElementById("book-btn").addEventListener("click", bookTicket);
+
+// Populate movie and showtime lists on page load
+window.addEventListener("load", () => {
+    populateMoviesList();
+    populateShowtimesList();
+});
+
+In this example, we have a basic movie ticket booking system that allows users to select a movie, a showtime, and a seat. The "Book Now" button becomes enabled only when both a movie and a showtime are selected. When the button is clicked, the bookTicket function is executed, displaying an alert with the selected movie, showtime, and a placeholder for the selected seat (you can implement the seat selection logic as needed).
+
+Please note that this is a frontend-only example. In a real-world application, you would need a server-side component to handle booking requests, store data, and manage user authentication and payment processing
+
