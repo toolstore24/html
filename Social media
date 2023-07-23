@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Social Media App</title>
+  <style>
+    /* Add your CSS styling here */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .post {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .post textarea {
+      width: 100%;
+      resize: vertical;
+    }
+
+    .post button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Simple Social Media App</h1>
+  </header>
+  <div class="container">
+    <div id="userProfile">
+      <h2>User Profile</h2>
+      <p><strong>Name:</strong> John Doe</p>
+      <p><strong>Location:</strong> New York</p>
+      <p><strong>Email:</strong> john.doe@example.com</p>
+    </div>
+    <div id="friendRequests">
+      <h2>Friend Requests</h2>
+      <ul id="requestsList">
+        <!-- Friend requests will be dynamically added here using JavaScript -->
+      </ul>
+    </div>
+    <div id="postSection">
+      <h2>Create a Post</h2>
+      <div class="post">
+        <textarea id="postContent" placeholder="Write your post here..."></textarea>
+        <button onclick="createPost()">Post</button>
+      </div>
+    </div>
+    <div id="timeline">
+      <h2>Timeline</h2>
+      <div id="posts">
+        <!-- Timeline posts will be dynamically added here using JavaScript -->
+      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Social Media App</title>
+  <style>
+    /* Add your CSS styling here */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .post {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .post textarea {
+      width: 100%;
+      resize: vertical;
+    }
+
+    .post button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Simple Social Media App</h1>
+  </header>
+  <div class="container">
+    <div id="userProfile">
+      <h2>User Profile</h2>
+      <p><strong>Name:</strong> John Doe</p>
+      <p><strong>Location:</strong> New York</p>
+      <p><strong>Email:</strong> john.doe@example.com</p>
+    </div>
+    <div id="friendRequests">
+      <h2>Friend Requests</h2>
+      <ul id="requestsList">
+        <!-- Friend requests will be dynamically added here using JavaScript -->
+      </ul>
+    </div>
+    <div id="postSection">
+      <h2>Create a Post</h2>
+      <div class="post">
+        <textarea id="postContent" placeholder="Write your post here..."></textarea>
+        <button onclick="createPost()">Post</button>
+      </div>
+    </div>
+    <div id="timeline">
+      <h2>Timeline</h2>
+      <div id="posts">
+        <!-- Timeline posts will be dynamically added here using JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample data for friend requests and posts (simplified for demonstration purposes)
+    const friendRequests = [
+      { id: 1, name: "Jane Doe" },
+      { id: 2, name: "Bob Smith" },
+    ];
+
+    const posts = [
+      { id: 1, content: "Hello, world!", author: "John Doe" },
+      { id: 2, content: "Having a great day!", author: "Jane Doe" },
+    ];
+
+    // Function to create a new post
+    function createPost() {
+      const postContent = document.getElementById("postContent").value;
+      if (postContent) {
+        const newPost = {
+          id: posts.length + 1,
+          content: postContent,
+          author: "John Doe", // Assuming the user is always the author for simplicity
+        };
+        posts.push(newPost);
+        updateTimeline();
+        document.getElementById("postContent").value = "";
+      }
+    }
+
+    // Function to update the timeline with the latest posts
+    function updateTimeline() {
+      const timelineDiv = document.getElementById("posts");
+      timelineDiv.innerHTML = "";
+      for (const post of posts) {
+        const postElement = document.createElement("div");
+        postElement.classList.add("post");
+        postElement.innerHTML = `
+          <h3>${post.author}</h3>
+          <p>${post.content}</p>
+        `;
+        timelineDiv.appendChild(postElement);
+      }
+    }
+
+    // Function to update friend requests
+    function updateFriendRequests() {
+      const requestsList = document.getElementById("requestsList");
+      requestsList.innerHTML = "";
+      for (const request of friendRequests) {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+          ${request.name}
+          <button onclick="acceptRequest(${request.id})">Accept</button>
+          <button onclick="rejectRequest(${request.id})">Reject</button>
+        `;
+        requestsList.appendChild(listItem);
+      }
+    }
+
+    // Function to accept a friend request
+    function acceptRequest(requestId) {
+      // You can add the logic to accept a friend request here
+      console.log("Accepted friend request with ID:", requestId);
+    }
+
+    // Function to reject a friend request
+    function rejectRequest(requestId) {
+      // You can add the logic to reject a friend request here
+      console.log("Rejected friend request with ID:", requestId);
+    }
+
+    // Initial population of the timeline and friend requests
+    updateTimeline();
+    updateFriendRequests();
+  </script>
+</body>
+</html>
+   
