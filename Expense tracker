@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .input-group {
+      margin-bottom: 1rem;
+    }
+
+    .input-group label,
+    .input-group input {
+      display: block;
+      width: 100%;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .expense-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .input-group {
+      margin-bottom: 1rem;
+    }
+
+    .input-group label,
+    .input-group input {
+      display: block;
+      width: 100%;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .expense-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Expense Tracker</h1>
+  </header>
+  <div class="container">
+    <div class="input-group">
+      <label for="expense-name">Expense Name:</label>
+      <input type="text" id="expense-name" placeholder="Enter expense name">
+    </div>
+    <div class="input-group">
+      <label for="expense-amount">Expense Amount:</label>
+      <input type="number" id="expense-amount" placeholder="Enter expense amount">
+    </div>
+    <button class="btn" onclick="addExpense()">Add Expense</button>
+    <div id="expense-list"></div>
+    <p>Total Expenses: <span id="total-expenses">0</span></p>
+  </div>
+
+  <script>
+    let expenses = [];
+
+    function addExpense() {
+      const nameInput = document.getElementById('expense-name');
+      const amountInput = document.getElementById('expense-amount');
+
+      const name = nameInput.value.trim();
+      const amount = parseFloat(amountInput.value);
+
+      if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter valid expense name and amount.');
+        return;
+      }
+
+      const expense = {
+        name,
+        amount
+      };
+      expenses.push(expense);
+
+      nameInput.value = '';
+      amountInput.value = '';
+
+      updateExpenseList();
+      updateTotalExpenses();
+    }
+
+    function updateExpenseList() {
+      const expenseList = document.getElementById('expense-list');
+      expenseList.innerHTML = '';
+
+      expenses.forEach((expense, index) => {
+        const expenseItem = document.createElement('div');
+        expenseItem.classList.add('expense-item');
+        expenseItem.innerHTML = `
+          <span>${expense.name}</span>
+          <span>${expense.amount.toFixed(2)}</span>
+          <button onclick="deleteExpense(${index})">Delete</button>
+        `;
+        expenseList.appendChild(expenseItem);
+      });
+    }
+
+    function updateTotalExpenses() {
+      const totalExpensesSpan = document.getElementById('total-expenses');
+      const totalAmount = expenses.reduce((total, expense) => total + expense.amount, 0);
+      totalExpensesSpan.textContent = totalAmount.toFixed(2);
+    }
+
+    function deleteExpense(index) {
+      expenses.splice(index, 1);
+      updateExpenseList();
+      updateTotalExpenses();
+    }
+  </script>
+</body>
+
+</html>
+￼Enter
+<body>
+  <header>
+    <h1>Expense Tracker</h1>
+  </header>
+  <div class="container">
+    <div class="input-group">
+      <label for="expense-name">Expense Name:</label>
+      <input type="text" id="expense-name" placeholder="Enter expense name">
+    </div>
+    <div class="input-group">
+      <label for="expense-amount">Expense Amount:</label>
+      <input type="number" id="expense-amount" placeholder="Enter expense amount">
+    </div>
+    <button class="btn" onclick="addExpense()">Add Expense</button>
+    <div id="expense-list"></div>
+    <p>Total Expenses: <span id="total-expenses">0</span></p>
+  </div>
+
+  <script>
+    let expenses = [];
+
+    function addExpense() {
+      const nameInput = document.getElementById('expense-name');
+      const amountInput = document.getElementById('expense-amount');
+
+const name = nameInput.value.trim();
+      const amount = parseFloat(amountInput.value);
+
+      if (!name || isNaN(amount) || amount <= 0) {
+        alert('Please enter valid expense name and amount.');
+        return;
+      }
+
+      const expense = {
+        name,
+        amount
+      };
+      expenses.push(expense);
+
+      nameInput.value = '';
+      amountInput.value = '';
+
+      updateExpenseList();
+      updateTotalExpenses();
+    }
+
+    function updateExpenseList() {
+      const expenseList = document.getElementById('expense-list');
+      expenseList.innerHTML = '';
+
+      expenses.forEach((expense, index) => {
