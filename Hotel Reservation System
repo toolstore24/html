@@ -1,0 +1,158 @@
+
+Write a complete responsive code of Hotel Reservation System: Build a system for users to book hotel rooms and view available amenities. html with JS 
+
+Building a complete responsive Hotel Reservation System is quite complex and beyond the scope of a single code snippet. However, I can provide you with a basic HTML and JavaScript template to get you started. Keep in mind that this is a simplified version and may not cover all functionalities of a real-world system. It includes the basic structure for booking hotel rooms and viewing available amenities.
+
+Make sure to create separate CSS files and possibly backend server-side code (using technologies like Node.js, PHP, etc.) to handle data processing and storage in a real-world scenario. Let's start with the front-end HTML and JavaScript:
+
+index.html:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Hotel Reservation System</h1>
+    </header>
+    <main>
+        <section class="booking-section">
+            <h2>Book a Room</h2>
+            <div>
+                <label for="check-in-date">Check-in Date:</label>
+                <input type="date" id="check-in-date">
+            </div>
+            <div>
+                <label for="check-out-date">Check-out Date:</label>
+                <input type="date" id="check-out-date">
+            </div>
+            <div>
+                <label for="room-type">Room Type:</label>
+                <select id="room-type">
+                    <option value="single">Single Room</option>
+                    <option value="double">Double Room</option>
+                    <option value="suite">Suite</option>
+                </select>
+            </div>
+            <div>
+                <button id="book-button">Book Now</button>
+            </div>
+        </section>
+        <section class="amenities-section">
+            <h2>Available Amenities</h2>
+            <ul id="amenities-list">
+                <!-- Amenity items will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+styles.css:
+
+css
+Copy code
+/* Add your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    padding: 1rem;
+}
+
+.booking-section,
+.amenities-section {
+    margin-bottom: 1rem;
+}
+
+.booking-section div,
+.amenities-section div {
+    margin-bottom: 0.5rem;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+script.js:
+
+javascript
+
+// JavaScript code to handle booking and amenities display
+document.addEventListener("DOMContentLoaded", function() {
+    const bookButton = document.getElementById("book-button");
+    const amenitiesList = document.getElementById("amenities-list");
+
+    bookButton.addEventListener("click", function() {
+        const checkInDate = document.getElementById("check-in-date").value;
+        const checkOutDate = document.getElementById("check-out-date").value;
+        const roomType = document.getElementById("room-type").value;
+
+        // You can implement booking functionality here or send data to the backend for processing.
+
+        displayAmenities(roomType);
+    });
+
+    function displayAmenities(roomType) {
+        // You can fetch amenities for the selected room type from the backend or use a predefined list.
+        const amenities = getAmenitiesForRoomType(roomType);
+
+        amenitiesList.innerHTML = "";
+        amenities.forEach((amenity) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = amenity;
+            amenitiesList.appendChild(listItem);
+        });
+    }
+
+    function getAmenitiesForRoomType(roomType) {
+        // Replace this with actual data retrieval logic from the backend.
+        // For demonstration purposes, we're using predefined data here.
+        const amenitiesData = {
+            single: ["Wi-Fi", "Air Conditioning", "Television"],
+            double: ["Wi-Fi", "Air Conditioning", "Television", "Mini Bar"],
+            suite: ["Wi-Fi", "Air Conditioning", "Television", "Mini Bar", "Jacuzzi"]
+        };
+
+        return amenitiesData[roomType] || [];
+    }
+});
+Remember, this is just a starting point, and a real-world Hotel Reservation System would require much more functionality, including user authentication, payment processing, room availability checks, backend server integration, and database handling. Additionally, make sure to implement proper error handling and security measures in a production system.
+
+
+
+
+
+
