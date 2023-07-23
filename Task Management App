@@ -1,0 +1,157 @@
+
+Write a complete responsive code of Task Management App: Develop an application to create and manage tasks with deadlines and priority levels. html with JS
+Creating a complete responsive Task Management App requires a significant amount of code, so I'll provide you with a simplified version that you can use as a starting point. This version will include HTML, CSS, and JavaScript code to handle the basic functionalities of creating and managing tasks. Please note that this is a basic example and may require further enhancements and validations for a production-ready application.
+
+HTML:
+
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Task Management App</h1>
+    <div class="form">
+      <input type="text" id="taskName" placeholder="Task name">
+      <input type="date" id="deadline">
+      <select id="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button onclick="addTask()">Add Task</button>
+    </div>
+    <div class="task-list">
+      <h2>Tasks</h2>
+      <ul id="tasks"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+CSS (styles.css):
+
+css
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form input[type="text"],
+.form input[type="date"],
+.form select {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.form button {
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.task-list {
+  margin-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+JavaScript (script.js):
+
+js
+Copy code
+// Task list array to store tasks
+let tasks = [];
+
+function addTask() {
+  const taskName = document.getElementById('taskName').value;
+  const deadline = document.getElementById('deadline').value;
+  const priority = document.getElementById('priority').value;
+
+  if (taskName && deadline) {
+    const task = {
+      name: taskName,
+      deadline: deadline,
+      priority: priority,
+    };
+
+    tasks.push(task);
+
+    // Reset input fields
+    document.getElementById('taskName').value = '';
+    document.getElementById('deadline').value = '';
+    document.getElementById('priority').value = 'low';
+
+    // Update the task list display
+    updateTaskList();
+  }
+}
+
+function updateTaskList() {
+  const taskList = document.getElementById('tasks');
+  taskList.innerHTML = '';
+
+  tasks.forEach((task, index) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <span>${task.name} - Deadline: ${task.deadline} - Priority: ${task.priority}</span>
+      <button onclick="removeTask(${index})">Remove</button>
+    `;
+
+    taskList.appendChild(listItem);
+  });
+}
+
+function removeTask(index) {
+  tasks.splice(index, 1);
+  updateTaskList();
+}
+
+// Initial update to show any pre-existing tasks
+updateTaskList();
+This code provides a simple Task Management App where users can input a task name, deadline, and priority level. When the "Add Task" button is clicked, the task is added to the list, and it displays the task's details (name, deadline, and priority). Users can remove tasks by clicking the "Remove" button associated with each task.
+
+Note: This is a basic example, and there are many ways to enhance and improve this Task Management App, such as adding data persistence, editing tasks, sorting tasks by priority or deadline, using a backend server, and more.
+
+
+
+
+
+
